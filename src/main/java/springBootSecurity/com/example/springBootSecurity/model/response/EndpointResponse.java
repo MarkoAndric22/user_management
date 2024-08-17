@@ -37,7 +37,7 @@ public class EndpointResponse implements Serializable {
   @Column(name = "method")
   private String method;
 
-  @Schema(example = "troter_admin")
+  @Schema(example = "admin")
   @JsonFormat(shape = JsonFormat.Shape.STRING)
   @JsonProperty("service")
   @Column(name = "service")

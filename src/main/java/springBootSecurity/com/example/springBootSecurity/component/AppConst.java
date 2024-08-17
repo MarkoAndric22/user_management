@@ -8,7 +8,7 @@ public class AppConst {
 
   public static final String HEADER_STRING = "Authorization";
 
-  public static final String TOKEN_SUBJECT = "troter_app";
+  public static final String TOKEN_SUBJECT = "app";
 
   public static final String HEADER_STRING_2 = "typ";
 

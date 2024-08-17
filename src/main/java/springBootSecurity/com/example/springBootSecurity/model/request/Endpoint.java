@@ -49,7 +49,7 @@ public class Endpoint implements Serializable {
   @NotBlank(message = "Please provide service")
   @NotEmpty(message = "Please provide service")
   @Size(min = 1, max = 255, message = "service must be between 1 and 255")
-  @Schema(example = "troter_admin")
+  @Schema(example = "admin")
   @JsonFormat(shape = JsonFormat.Shape.STRING)
   @JsonProperty("service")
   @Column(name = "service")

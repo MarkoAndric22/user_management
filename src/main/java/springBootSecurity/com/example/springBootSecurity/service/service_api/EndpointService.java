@@ -37,11 +37,11 @@ public class EndpointService {
     List<String> services = new LinkedList<>();
     List<Mapping> mappings = new LinkedList<>();
 
-    // troter user management APIs
-    MappingServicesWrapper troterUmEp = mappingService.getMapping(appProperties.getMsApplicationName());
-    if (troterUmEp != null) {
-      services.addAll(troterUmEp.getServices());
-      mappings.addAll(troterUmEp.getMappings());
+    // user management APIs
+    MappingServicesWrapper UmEp = mappingService.getMapping(appProperties.getMsApplicationName());
+    if (UmEp != null) {
+      services.addAll(UmEp.getServices());
+      mappings.addAll(UmEp.getMappings());
     }
     // Collect all
     MappingServicesWrapper endpoints = new MappingServicesWrapper();
