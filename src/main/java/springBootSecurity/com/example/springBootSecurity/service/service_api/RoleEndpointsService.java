@@ -29,6 +29,12 @@ public class RoleEndpointsService {
   private final EndpointRepository endpointRepository;
   private final EndpointResponseRepository endpointResponseRepository;
 
+  /**
+   * Create RoleEndpoints
+   *
+   * @param models
+   * @return
+   */
   @Transactional(rollbackFor = {Exception.class, CustomException.class})
   public ResponseEntity<String> create(RoleEndpointsDto models) {
     if (!roleRepository.existsById(models.getRoleId())) {
@@ -63,6 +69,12 @@ public class RoleEndpointsService {
     }
   }
 
+  /**
+   * Delete RoleEndpoint
+   *
+   * @param ids
+   * @return
+   */
   public ResponseEntity<HttpStatus> delete(List<Integer> ids) {
     try {
       roleEndpointsRepository.deleteAllById(ids);

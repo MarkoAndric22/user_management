@@ -22,6 +22,12 @@ public class RoleMenuService {
   private final RoleMenuUpdateRepository roleMenuUpdateRepository;
   private final RoleMenuResponseRepository roleMenuResponseRepository;
 
+  /**
+   * Create combination role and menu
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<RoleMenuResponse> create(RoleMenu model) {
     Optional<RoleMenuResponse> check = roleMenuResponseRepository.findByRoleIdAndMenuId(model.getRoleId(), model.getMenuId());
     if (check.isPresent()) {
@@ -38,6 +44,12 @@ public class RoleMenuService {
     }
   }
 
+  /**
+   * Update role meny combination
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<String> update(RoleMenuUpdate model) {
     if (!roleMenuResponseRepository.existsById(model.getId())) {
       throw new CustomException("Role Menu with ID `" + model.getId() + "` not exists.");
@@ -50,6 +62,12 @@ public class RoleMenuService {
     }
   }
 
+  /**
+   * Delete combination role menu
+   *
+   * @param id
+   * @return
+   */
   public ResponseEntity<HttpStatus> delete(Integer id) {
     if (!roleMenuResponseRepository.existsById(id)) {
       throw new CustomException("Role Menu with ID `" + id + "` not exists.");

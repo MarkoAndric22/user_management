@@ -24,6 +24,12 @@ public class RoleService {
   private final RoleUpdateRepository roleUpdateRepository;
   private final RoleResponseRepository roleResponseRepository;
 
+  /**
+   * Create role
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<RoleResponse> create(Role model) {
     Optional<RoleResponse> check = roleResponseRepository.findByName(model.getName());
     if (check.isPresent()) {
@@ -40,6 +46,12 @@ public class RoleService {
     }
   }
 
+  /**
+   * Update role
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<String> update(RoleUpdate model) {
     if (model.getId() < MIN_ID || !roleResponseRepository.existsById(model.getId())) {
       throw new CustomException("Role with ID `" + model.getId() + "` not exists.");
@@ -52,6 +64,12 @@ public class RoleService {
     }
   }
 
+  /**
+   * Delete role
+   *
+   * @param id
+   * @return
+   */
   public ResponseEntity<HttpStatus> delete(Integer id) {
     if (id < MIN_ID || !roleResponseRepository.existsById(id)) {
       throw new CustomException("Role with ID `" + id + "` not exists.");

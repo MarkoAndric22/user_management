@@ -22,6 +22,12 @@ public class MenuService {
   private final MenuRepository menuRepository;
   private final MenuUpdateRepository menuUpdateRepository;
 
+  /**
+   * Create menu
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<MenuResponse> create(Menu model) {
     Optional<MenuResponse> check = menuResponseRepository.findByMenuNumber(model.getMenuNumber());
     if (check.isPresent()) {
@@ -38,6 +44,12 @@ public class MenuService {
     }
   }
 
+  /**
+   * Update menu
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<String> update(MenuUpdate model) {
     if (!menuResponseRepository.existsById(model.getId())) {
       throw new CustomException("Menu with ID `" + model.getId() + "` not exists.");
@@ -50,6 +62,12 @@ public class MenuService {
     }
   }
 
+  /**
+   * Delete menu
+   *
+   * @param id
+   * @return
+   */
   public ResponseEntity<HttpStatus> delete(Integer id) {
     if (!menuResponseRepository.existsById(id)) {
       throw new CustomException("Menu with ID `" + id + "` not exists.");

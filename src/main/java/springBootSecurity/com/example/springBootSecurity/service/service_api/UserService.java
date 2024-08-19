@@ -29,6 +29,12 @@ public class UserService {
   private final UserUpdateRepository userUpdateRepository;
 
 
+  /**
+   * Create user
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<String> create(User model) {
     Optional<UserResponse> checkUserName = userResponseRepository.findByUserName(model.getUserName());
     if (checkUserName.isPresent()) {
@@ -53,6 +59,12 @@ public class UserService {
     }
   }
 
+  /**
+   * Update user
+   *
+   * @param model
+   * @return
+   */
   public ResponseEntity<String> update(UserUpdate model) {
     Optional<UserResponse> user = userResponseRepository.findById(model.getId());
     if (model.getId() < MIN_ID || user.isEmpty()) {
@@ -81,6 +93,12 @@ public class UserService {
     }
   }
 
+  /**
+   * Delete user
+   *
+   * @param id
+   * @return
+   */
   public ResponseEntity<HttpStatus> delete(Integer id) {
     if (id < MIN_ID || !userRepository.existsById(id)) {
       throw new CustomException("User with ID `" + id + "` does not exists.");
